@@ -25,7 +25,7 @@ public class FadeScene : MonoBehaviour
             alp += 0.01f;
             yield return null;
         }
-        SceneManager.LoadScene("GameScene1");
+        SceneManager.LoadScene("SelectScene");
     }
 
     public void OnClick()
