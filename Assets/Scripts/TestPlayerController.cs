@@ -7,7 +7,7 @@ public class TestPlayerController : MonoBehaviour
 {
     [Header("X軸方向に加える力")]
     [SerializeField] float MoveX;
-    public Rigidbody2D rb2d;
+    private Rigidbody2D rb2d;
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
@@ -21,8 +21,8 @@ public class TestPlayerController : MonoBehaviour
 
     public void Move()
     {
-        transform.position = new Vector3(MoveX, 0.0f);
-        rb2d.AddForce(transform.position);
+        rb2d.velocity = new Vector2(MoveX, rb2d.velocity.y); 
+            
     }
 
     private void Jump()
