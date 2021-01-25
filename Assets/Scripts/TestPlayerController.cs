@@ -7,12 +7,19 @@ public class TestPlayerController : MonoBehaviour
 {
     [Header("X軸方向に加える力")]
     [SerializeField] float MoveX;
+    [Header("重力")]
+    [SerializeField] float gravity;
+    [Header("ジャンプ速度")]
+    [SerializeField] float jumpSpeed;
+    [Header("高さ制限")]
+    [SerializeField] float jumpHeight;
+
     private Rigidbody2D rb2d = null;
-    private SpriteRenderer spriteRenderer = null;  
+      
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        
 
     }
 
@@ -20,19 +27,6 @@ public class TestPlayerController : MonoBehaviour
     {
         rb2d.velocity = new Vector2(MoveX, rb2d.velocity.y);
 
-        Jump();
-    }
-
-    private void Jump()
-    {
-
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Obstacle" && spriteRenderer.enabled == true)
-        {
-            Destroy(gameObject);
-        }
+        
     }
 }
