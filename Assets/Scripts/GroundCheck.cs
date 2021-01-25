@@ -32,15 +32,19 @@ public class GroundCheck : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == groundTag)
+        if (collision.gameObject.tag == groundTag)
         {
+            Vector2 temp = gameObject.transform.localScale;
+            temp.x *= -1;
+            gameObject.transform.localScale = temp;
+
             isGroundEnter = true;
             Debug.Log("Now grounded");
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.tag == groundTag)
+        if (collision.gameObject.tag == groundTag)
         {
             isGroundStay = true;
             Debug.Log("Keeps grounding");
@@ -48,7 +52,7 @@ public class GroundCheck : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == groundTag)
+        if (collision.gameObject.tag == groundTag)
         {
             isGroundExit = true;
             Debug.Log("Not grounded");
