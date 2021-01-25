@@ -7,56 +7,45 @@ public class TestPlayerController : MonoBehaviour
 {
     [Header("X軸方向に加える力")]
     [SerializeField] float MoveX;
-    [Header("重力")]
-    [SerializeField] float gravity;
-    [Header("ジャンプ速度")]
-    [SerializeField] float jumpSpeed;
-    [Header("高さ制限")]
-    [SerializeField] float jumpHeight;
+    [Header("ジャンプ力")]
+    [SerializeField] float jumpFroce = 0;
+    [Header("地面のレイヤー")]
+    public LayerMask groundLayer;
     [Header("接地判定")]
     public GroundCheck groundCheck;
 
     private Rigidbody2D rb2d = null;
-    private bool isGround = false;
-    private bool isJump = false;
-    private float jumpPos = 0.0f;
+    private bool isGrounded = false;
       
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
 
+    private void Update()
+    {
+        rb2d.velocity = new Vector2(MoveX, rb2d.velocity.y);
+
+        isGrounded = groundCheck.IsGround();
+        //isGrounded = Physics2D.Linecast(transform.position + transform.up * 1,
+        //                                transform.position + transform.up * 0.1f,
+        //                                groundLayer);
+
+        if (isGrounded && Input.GetMouseButtonDown(0))
+        {
+            Jump();
+        }
+    }
+
     private void FixedUpdate()
     {
-        isGround = groundCheck.IsGround();
+        rb2d.velocity = new Vector2(MoveX, rb2d.velocity.y);
+    }
 
-        float ySpeed = -gravity;
-        float vertical = Input.GetAxis("Vertical");
+    private void Jump() 
+    {
+        rb2d.AddForce(Vector2.up * jumpFroce);  //上方向へ力を加える。
 
-        if (isGround)
-        {
-            if (vertical > 0)
-            {
-                ySpeed = jumpSpeed;
-                jumpPos = transform.position.y; //ジャンプした位置を記録する
-                isJump = true;
-            }
-            else
-            {
-                isJump = false;
-            }
-        }
-        else if (isJump)
-        {
-            if (vertical > 0 && jumpPos + jumpHeight > transform.position.y)
-            {
-                ySpeed = jumpSpeed;
-            }
-            else
-            {
-                isJump = false;
-            }
-        }
-        rb2d.velocity = new Vector2(MoveX, ySpeed);
+        isGrounded = false;
     }
 }
