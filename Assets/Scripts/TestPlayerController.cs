@@ -13,20 +13,50 @@ public class TestPlayerController : MonoBehaviour
     [SerializeField] float jumpSpeed;
     [Header("高さ制限")]
     [SerializeField] float jumpHeight;
+    [Header("接地判定")]
+    public GroundCheck groundCheck;
 
     private Rigidbody2D rb2d = null;
+    private bool isGround = false;
+    private bool isJump = false;
+    private float jumpPos = 0.0f;
       
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-        
-
     }
 
-    void Update()
+    private void FixedUpdate()
     {
-        rb2d.velocity = new Vector2(MoveX, rb2d.velocity.y);
+        isGround = groundCheck.IsGround();
 
-        
+        float ySpeed = -gravity;
+        float vertical = Input.GetAxis("Vertical");
+
+        if (isGround)
+        {
+            if (vertical > 0)
+            {
+                ySpeed = jumpSpeed;
+                jumpPos = transform.position.y; //ジャンプした位置を記録する
+                isJump = true;
+            }
+            else
+            {
+                isJump = false;
+            }
+        }
+        else if (isJump)
+        {
+            if (vertical > 0 && jumpPos + jumpHeight > transform.position.y)
+            {
+                ySpeed = jumpSpeed;
+            }
+            else
+            {
+                isJump = false;
+            }
+        }
+        rb2d.velocity = new Vector2(MoveX, ySpeed);
     }
 }
