@@ -27,9 +27,6 @@ public class TestPlayerController : MonoBehaviour
         rb2d.velocity = new Vector2(MoveX, rb2d.velocity.y);
 
         isGrounded = groundCheck.IsGround();
-        //isGrounded = Physics2D.Linecast(transform.position + transform.up * 1,
-        //                                transform.position + transform.up * 0.1f,
-        //                                groundLayer);
 
         if (isGrounded && Input.GetMouseButtonDown(0))
         {
