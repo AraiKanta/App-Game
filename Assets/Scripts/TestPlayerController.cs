@@ -27,7 +27,7 @@ public class TestPlayerController : MonoBehaviour
 
     private void Update()
     {
-        _rb2d.velocity = new Vector2(MoveX, _rb2d.velocity.y);
+        //_rb2d.velocity = new Vector2(MoveX, _rb2d.velocity.y);
 
         isGrounded = groundCheck.IsGround();
     }
