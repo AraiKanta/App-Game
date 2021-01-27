@@ -5,9 +5,16 @@ using UnityEngine.UI;
 
 public class InversionButton : MonoBehaviour
 {
+    GameObject tileMap;
+    GameObject tileMap1;
+
+    [SerializeField] Button _changeButton;
     void Start()
     {
-       
+        GameObject grid = GameObject.Find("Grid");
+        tileMap = grid.transform.GetChild(0).gameObject;
+        tileMap1 = grid.transform.GetChild(1).gameObject;
+        _changeButton.onClick.AddListener(OnClick);
     }
 
     void Update()
@@ -17,13 +24,20 @@ public class InversionButton : MonoBehaviour
 
     public void OnClick()
     {
-        Debug.Log("InversionButton Clicked(反転ボタンをクリックした)");
-
-        GameObject grid = GameObject.Find("Grid");
-        GameObject tileMap = grid.transform.GetChild(0).gameObject;
-        GameObject tileMap1 = grid.transform.GetChild(1).gameObject;
+        Debug.Log("InversionButton Clicked");
 
         tileMap.SetActive(false);
         tileMap1.SetActive(true);
+
+        _changeButton.onClick.RemoveListener(OnClick);
+        _changeButton.onClick.AddListener(ReverseOnClick);
+    }
+
+    public void ReverseOnClick() 
+    {
+        tileMap.SetActive(true);
+        tileMap1.SetActive(false);
+        _changeButton.onClick.RemoveListener(ReverseOnClick);
+        _changeButton.onClick.AddListener(OnClick);
     }
 }
