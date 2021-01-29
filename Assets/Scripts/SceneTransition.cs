@@ -6,8 +6,32 @@ using UnityEngine.SceneManagement;
 
 public class SceneTransition : MonoBehaviour
 {
-    public void OnClick() 
+    float alp;
+    [Header("シーン遷移を開始するまでの時間")]
+    public float fadeStartTime;
+    [Header("Panelオブジェクト")]
+    public GameObject Panel;
+
+    void Start()
     {
-        SceneManager.LoadScene("GameScene1", LoadSceneMode.Single);
+        alp = Panel.GetComponent<Image>().color.a;
+    }
+
+    //フェードアウトの処理
+    IEnumerator FadePanel()
+    {
+        while (alp < 1)
+        {
+            fadeStartTime += Time.deltaTime;
+            Panel.GetComponent<Image>().color += new Color(0, 0, 0, 0.1f * fadeStartTime);
+            alp += 0.01f;
+            yield return null;
+        }
+        SceneManager.LoadScene("SelectScene");
+    }
+
+    public void OnClick()
+    {
+        StartCoroutine(FadePanel());
     }
 }
