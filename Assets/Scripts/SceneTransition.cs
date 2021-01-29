@@ -7,14 +7,20 @@ using UnityEngine.SceneManagement;
 public class SceneTransition : MonoBehaviour
 {
     float alp;
-    [Header("シーン遷移を開始するまでの時間")]
+    [Header("シーン遷移を開始するまでの時間")] 
     public float fadeStartTime;
+    [Header("現在のステージ番号")]
+    public int currentStageNum = 0;
+    [Header("ステージ名")]
+    public string[] stageName;
     [Header("Panelオブジェクト")]
-    public GameObject Panel;
+    public GameObject panel;
 
     void Start()
     {
-        alp = Panel.GetComponent<Image>().color.a;
+        alp = panel.GetComponent<Image>().color.a;
+
+        currentStageNum += 1;
     }
 
     //フェードアウトの処理
@@ -23,11 +29,11 @@ public class SceneTransition : MonoBehaviour
         while (alp < 1)
         {
             fadeStartTime += Time.deltaTime;
-            Panel.GetComponent<Image>().color += new Color(0, 0, 0, 0.1f * fadeStartTime);
+            panel.GetComponent<Image>().color += new Color(0, 0, 0, 0.1f * fadeStartTime);
             alp += 0.01f;
-            yield return null;
+            yield return null ;
         }
-        SceneManager.LoadScene("SelectScene");
+        SceneManager.LoadSceneAsync(stageName[currentStageNum]);
     }
 
     public void OnClick()
