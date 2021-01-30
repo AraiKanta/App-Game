@@ -592,7 +592,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeStartTime: 0
-  Panel: {fileID: 1666718274}
+  currentStageNum: 0
+  stageName:
+  - Strat
+  - SelectScene
+  panel: {fileID: 1666718274}
 --- !u!1 &1666718274
 GameObject:
   m_ObjectHideFlags: 0
