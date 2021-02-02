@@ -11,7 +11,9 @@ public class TestPlayerController : MonoBehaviour
     public GroundCheck groundCheck;
 
     private Rigidbody2D _rb2d = null;
-      
+
+    public float y;
+
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
@@ -19,12 +21,13 @@ public class TestPlayerController : MonoBehaviour
 
     private void Update()
     {
-        
-    }
 
+    }
     private void FixedUpdate()
     {
         _rb2d.velocity = new Vector2(MoveX, _rb2d.velocity.y);
+
+        Physics2D.gravity = new Vector2(0, y);
     }
 
     //　DeadTileの当たり判定
@@ -33,7 +36,12 @@ public class TestPlayerController : MonoBehaviour
         if (collision.gameObject.tag == "DeadTile")
         {
             Destroy(gameObject);
-            Debug.Log("Player is collision now");
+            Debug.Log("Player Dead");
         }
+    }
+
+    public void OnClick()
+    {
+        y = -y;
     }
 }
