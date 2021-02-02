@@ -1,18 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class TestPlayerController : MonoBehaviour
 {
     [Header("X軸方向に加える力")]
     [SerializeField] float MoveX;
     [Header("接地判定")]
     public GroundCheck groundCheck;
+    [Header("重力")]
+    public float gravityY;
 
     private Rigidbody2D _rb2d = null;
-
-    public float y;
 
     void Start()
     {
@@ -25,9 +25,10 @@ public class TestPlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        //オートランさせているところ
         _rb2d.velocity = new Vector2(MoveX, _rb2d.velocity.y);
 
-        Physics2D.gravity = new Vector2(0, y);
+        Physics2D.gravity = new Vector2(0, gravityY);
     }
 
     //　DeadTileの当たり判定
@@ -40,8 +41,9 @@ public class TestPlayerController : MonoBehaviour
         }
     }
 
+    //重力反転
     public void OnClick()
     {
-        y = -y;
+        gravityY = -gravityY;
     }
 }
