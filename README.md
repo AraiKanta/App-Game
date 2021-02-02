@@ -1,2 +1,2 @@
 # App-Game 
-##プラットホーム：Android 
+プラットホーム：Android 
