@@ -1,2 +1,5 @@
-# App-Game 
-プラットホーム：Android 
+# App-Game(仮)
+
+・横スクロールオートランゲーム
+・プラットホーム：Android 
+
