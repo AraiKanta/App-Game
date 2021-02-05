@@ -11,12 +11,16 @@ public class TestPlayerController : MonoBehaviour
     public GroundCheck groundCheck;
     [Header("重力")]
     public float gravityY;
+    [Header("プレイヤーをTransFormRotationX軸で回転している角度")]
+    [SerializeField]private float rotationX = 0;
 
     private Rigidbody2D _rb2d = null;
 
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
+        this.transform.rotation = Quaternion.Euler(rotationX, 0, 0);
+
     }
 
     private void Update()
@@ -43,7 +47,9 @@ public class TestPlayerController : MonoBehaviour
 
     //重力反転
     public void OnClick()
-    {
+    { 
         gravityY = -gravityY;
+        rotationX = -rotationX + 180; 
+        
     }
 }
