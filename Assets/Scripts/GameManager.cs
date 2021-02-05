@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    
     [Header("GameOverテキスト")]
-    public Text gameOverText;
+    [SerializeField] private Text gameOverText;
     [Header("Scoreテキスト")]
-    public Text scoreText;
+    [SerializeField] private Text scoreText;
 
+    TimeManager timeManager;
     void Start()
     {
         //シーンを切り替えてもこのゲームオブジェクトを削除しないようにする

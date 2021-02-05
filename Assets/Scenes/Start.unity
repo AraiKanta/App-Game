@@ -293,7 +293,6 @@ GameObject:
   - component: {fileID: 983860552}
   - component: {fileID: 983860555}
   - component: {fileID: 983860554}
-  - component: {fileID: 983860556}
   - component: {fileID: 983860553}
   m_Layer: 5
   m_Name: TouchToScreen
@@ -333,7 +332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9322b8b29eb526a45b7a4a1e5888f871, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 0
+  duration: 1
+  ttsText: {fileID: 983860554}
 --- !u!114 &983860554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -377,18 +377,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 983860551}
   m_CullTransparentMesh: 0
---- !u!225 &983860556
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983860551}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1 &1279713165
 GameObject:
   m_ObjectHideFlags: 0
