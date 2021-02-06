@@ -11,7 +11,7 @@ public class TestPlayerController : MonoBehaviour
     public GroundCheck groundCheck;
     [Header("重力")]
     public float gravityY;
-    [Header("プレイヤーをTransFormRotationX軸で回転している角度")]
+    [Header("プレイヤーがTransFormRotationX軸で回転している角度")]
     [SerializeField]private float rotationX = 0;
 
     private Rigidbody2D _rb2d = null;
