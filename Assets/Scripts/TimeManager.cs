@@ -20,13 +20,7 @@ public class TimeManager : MonoBehaviour
     [SerializeField] Animator m_anim;
     [Header("CountDownTimer")]
     [SerializeField] private Text timerText;
-    [Header("StartCountTimer")]
-    [SerializeField] Text CountText;
-    [Header("スタートまでのカウントダウン")]
-    [SerializeField] float countDown = 4f;
-    //前回のupdate時の秒数
     private float oldSeconds;
-    int count;
 
     void Start()
     {
@@ -39,49 +33,37 @@ public class TimeManager : MonoBehaviour
 
     void Update()
     {
-        if (countDown >= 1)
+        //　制限時間が0秒以下なら何もしない
+        if (totalTime <= 0f)
         {
-            countDown -= Time.deltaTime;
-            count = (int)countDown;
-            CountText.text = count.ToString();
+            return;
         }
+        //　一旦トータルの制限時間を計測；
+        totalTime = minute * 60 + seconds;
+        totalTime -= Time.deltaTime;
 
-        if (countDown <= 1)
+        //　再設定
+        minute = (int)totalTime / 60;
+        seconds = totalTime - minute * 60;
+
+        if (totalTime < m_startWarning)
         {
-            CountText.text = "";
-
-            //　制限時間が0秒以下なら何もしない
-            if (totalTime <= 0f)
+            timerText.color = m_warningColor;
+            if (m_anim)
             {
-                return;
+                m_anim.Play("Warning");
             }
-            //　一旦トータルの制限時間を計測；
-            totalTime = minute * 60 + seconds;
-            totalTime -= Time.deltaTime;
-
-            //　再設定
-            minute = (int)totalTime / 60;
-            seconds = totalTime - minute * 60;
-
-            if (totalTime < m_startWarning)
-            {
-                timerText.color = m_warningColor;
-                if (m_anim)
-                {
-                    m_anim.Play("Warning");
-                }
-            }
-            //　タイマー表示用UIテキストに時間を表示する
-            if ((int)seconds != (int)oldSeconds)
-            {
-                timerText.text = minute.ToString("00") + ":" + ((int)seconds).ToString("00");
-            }
-            oldSeconds = seconds;
-            //　制限時間以下になったらコンソールに『GameOver』という文字列を表示する
-            if (totalTime <= 0f)
-            {
-                Debug.Log("GameOverだよ～ん");
-            }
+        }
+        //　タイマー表示用UIテキストに時間を表示する
+        if ((int)seconds != (int)oldSeconds)
+        {
+            timerText.text = minute.ToString("00") + ":" + ((int)seconds).ToString("00");
+        }
+        oldSeconds = seconds;
+        //　制限時間以下になったらコンソールに『GameOver』という文字列を表示する
+        if (totalTime <= 0f)
+        {
+            Debug.Log("GameOverだよ～ん");
         }
     }
 }
