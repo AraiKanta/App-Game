@@ -16,6 +16,8 @@ public class TestPlayerController : MonoBehaviour
 
     private Rigidbody2D _rb2d = null;
 
+    bool isDead = false;
+
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
@@ -35,13 +37,21 @@ public class TestPlayerController : MonoBehaviour
         Physics2D.gravity = new Vector2(0, gravityY);
     }
 
+    public bool IsDead() 
+    {
+        return isDead;
+    }
+
     //　DeadTileの当たり判定
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "DeadTile")
         {
-            Destroy(gameObject);
-            Debug.Log("Player Dead");
+            isDead = true;
+            if (isDead)
+            {
+                Debug.Log("Player Dead");
+            }
         }
     }
 
@@ -50,6 +60,10 @@ public class TestPlayerController : MonoBehaviour
     { 
         gravityY = -gravityY;
         rotationX = -rotationX + 180; 
-        
+    }
+
+    public void SetSteerActive(bool active) 
+    {
+        _rb2d.isKinematic = !active;
     }
 }
