@@ -14,6 +14,8 @@ public class TestPlayerController : MonoBehaviour
     [Header("プレイヤーがTransFormRotationX軸で回転している角度")]
     [SerializeField]private float rotationX = 0;
 
+    Animator _anim;
+
     private Rigidbody2D _rb2d = null;
 
     bool isDead = false;
@@ -21,18 +23,25 @@ public class TestPlayerController : MonoBehaviour
     void Start()
     {
         _rb2d = GetComponent<Rigidbody2D>();
-        this.transform.rotation = Quaternion.Euler(rotationX, 0, 0);
+        _anim = GetComponent<Animator>();
 
+        _anim.SetBool("Run", true);
     }
 
     private void Update()
     {
-
+        if (Input.GetMouseButtonDown(0))
+        {
+            _anim.SetTrigger("Jump");
+        }
     }
     private void FixedUpdate()
     {
         //オートランさせているところ
         _rb2d.velocity = new Vector2(MoveX, _rb2d.velocity.y);
+
+        //プレイヤーのRotationXを回転させている
+        this.transform.rotation = Quaternion.Euler(rotationX, 0, 0);
 
         Physics2D.gravity = new Vector2(0, gravityY);
     }
@@ -59,7 +68,7 @@ public class TestPlayerController : MonoBehaviour
     public void OnClick()
     { 
         gravityY = -gravityY;
-        rotationX = -rotationX + 180; 
+        rotationX = -rotationX + 180;
     }
 
     public void SetSteerActive(bool active) 
