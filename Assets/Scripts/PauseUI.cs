@@ -7,6 +7,8 @@ public class PauseUI : MonoBehaviour
 {
     public GameObject _pauseUI;
     public GameObject _text;
+    public GameObject _returnToTitle;
+    public GameObject _retry;
     public Button _changeButton;
 
     private void Start()
@@ -19,9 +21,11 @@ public class PauseUI : MonoBehaviour
         // ポーズUIのアクティブ、非アクティブを切り替え
         _pauseUI.SetActive(!_pauseUI.activeSelf);
         _text.SetActive(!_text.activeSelf);
+        _returnToTitle.SetActive(!_returnToTitle.activeSelf);
+        _retry.SetActive(!_retry.activeSelf);
 
         // ポーズUIが表示されているときは停止
-        if (_pauseUI.activeSelf && _text.activeSelf)
+        if (_pauseUI.activeSelf && _text.activeSelf && _returnToTitle && _retry)
         {
             Time.timeScale = 0f;
         }
