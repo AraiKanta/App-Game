@@ -49,3 +49,25 @@ Thumbs.db
 
 #python bytecode cache, for some plugins.
 *.pyc
+Assets/Bolchie/
+Assets/Sprites/twitter_01.png
+Assets/Sprites/twitter_01.png.meta
+Assets/Sprites/icon_options.png.meta
+Assets/Sprites/icon_options.png
+Assets/Sprites/darkTwitter_01.png.meta
+Assets/Sprites/darkTwitter_01.png
+Assets/Sprites/darkIcon_options.png.meta
+Assets/Sprites/darkIcon_options.png
+Assets/Sprites/JPY_6x4.png.meta
+Assets/Sprites/JPY_6x4.png
+Assets/Prefabs/Player.prefab.meta
+Assets/Prefabs/Player.prefab
+Assets/Bolchie.meta
+Assets/Animations/Stand.anim.meta
+Assets/Animations/Stand.anim
+Assets/Animations/Run.anim.meta
+Assets/Animations/Run.anim
+Assets/Animations/Player.controller.meta
+Assets/Animations/Player.controller
+Assets/Animations/Dead.anim.meta
+Assets/Animations/Dead.anim

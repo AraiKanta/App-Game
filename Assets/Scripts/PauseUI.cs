@@ -34,12 +34,22 @@ public class PauseUI : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
-        
+
         _changeButton.onClick.RemoveListener(OnClick);
         _changeButton.onClick.AddListener(ReverseOnClick);
     }
     public void ReverseOnClick() 
     {
+        if (_pauseUI.activeSelf && _text.activeSelf && _returnToTitle && _retry)
+        {
+            _pauseUI.SetActive(!_pauseUI.activeSelf);
+            _text.SetActive(!_text.activeSelf);
+            _returnToTitle.SetActive(!_returnToTitle.activeSelf);
+            _retry.SetActive(!_retry.activeSelf);
+
+            Time.timeScale = 1f;
+        }
+
         _changeButton.onClick.RemoveListener(ReverseOnClick);
         _changeButton.onClick.AddListener(OnClick);
     }

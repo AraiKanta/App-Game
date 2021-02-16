@@ -13,7 +13,7 @@ public class TestPlayerController : MonoBehaviour
     public float gravityY;
     [Header("プレイヤーがTransFormRotationX軸で回転している角度")]
     [SerializeField]private float rotationX = 0;
-
+    /// <summary>animatorの変数</summary>
     Animator _anim;
 
     private Rigidbody2D _rb2d = null;
@@ -30,10 +30,7 @@ public class TestPlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-        {
-            _anim.SetTrigger("Jump");
-        }
+        
     }
     private void FixedUpdate()
     {
@@ -46,6 +43,7 @@ public class TestPlayerController : MonoBehaviour
         Physics2D.gravity = new Vector2(0, gravityY);
     }
 
+    //Deadのフラグ判定
     public bool IsDead() 
     {
         return isDead;
@@ -61,6 +59,8 @@ public class TestPlayerController : MonoBehaviour
             {
                 Debug.Log("Player Dead");
             }
+
+            _anim.SetTrigger("Dead");
         }
     }
 

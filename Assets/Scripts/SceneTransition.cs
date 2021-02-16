@@ -31,9 +31,14 @@ public class SceneTransition : MonoBehaviour
             fadeStartTime += Time.deltaTime;
             panel.GetComponent<Image>().color += new Color(0, 0, 0, 0.1f * fadeStartTime);
             alp += 0.01f;
-            yield return null ;
+            yield return new WaitForEndOfFrame();
         }     
         SceneManager.LoadSceneAsync(stageName[currentStageNum]);
+
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }  
     }
 
     public void OnClick()

@@ -44,6 +44,15 @@ TagManager:
   - name: Sky
     uniqueID: 1298824861
     locked: 0
+  - name: Building
+    uniqueID: 535890831
+    locked: 0
+  - name: TheStreet
+    uniqueID: 1936029921
+    locked: 0
+  - name: UtilityPole
+    uniqueID: 2203285949
+    locked: 0
   - name: map
     uniqueID: 2434374669
     locked: 0
