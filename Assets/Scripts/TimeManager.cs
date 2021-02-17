@@ -22,10 +22,14 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private Text timerText;
     private float oldSeconds;
 
-    public GameObject _timeUpPanel;
-    public GameObject _timeUpText;
-    public GameObject _returnToTitle;
-    public GameObject _retry;
+    [Header("パネル")]
+    [SerializeField] private GameObject _timeUpPanel;
+    [Header("タイムアップのテキスト")]
+    [SerializeField] private GameObject _timeUpText;
+    [Header("タイトルに戻るボタン")]
+    [SerializeField] private GameObject _returnToTitle;
+    [Header("リトライボタン")]
+    [SerializeField] private GameObject _retry;
 
 
     void Start()
