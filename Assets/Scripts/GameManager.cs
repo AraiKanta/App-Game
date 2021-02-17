@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [Header("PlayerController")]
-    public TestPlayerController _playerController;
+    public PlayerController _playerController;
     [Header("TimeManager")]
     public TimeManager _timeManager;
 
@@ -81,6 +81,11 @@ public class GameManager : MonoBehaviour
     //リトライ
     public void RetryClick() 
     {
+        if (Time.timeScale == 0f)
+        {
+            Time.timeScale = 1f;
+        }
+
         SceneManager.LoadScene("Test");
     }
 }
