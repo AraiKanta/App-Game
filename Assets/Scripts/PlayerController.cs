@@ -46,6 +46,8 @@ public class PlayerController : MonoBehaviour
     //Deadのフラグ判定
     public bool IsDead() 
     {
+        Time.timeScale = 0f;
+
         return isDead;
     }
 
