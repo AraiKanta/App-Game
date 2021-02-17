@@ -10,13 +10,16 @@ public class GameManager : MonoBehaviour
     public PlayerController _playerController;
     [Header("TimeManager")]
     public TimeManager _timeManager;
+    [Header("パネル")]
+    [SerializeField] private GameObject _gameOverPanel;
+    [Header("ゲームオーバーのテキスト")]
+    [SerializeField] private GameObject _gameOverText;
+    [Header("タイトルに戻るボタン")]
+    [SerializeField] private GameObject _returnToTitle;
+    [Header("リトライボタン")]
+    [SerializeField] private GameObject _retry;
 
-    //[Header("GameOverテキスト")]
-    //[SerializeField] private Text gameOverText;
-    //[Header("Scoreテキスト")]
-    //[SerializeField] private Text scoreText;
-
-
+    //ステート
     enum State 
     {   
         Ready,
@@ -42,7 +45,7 @@ public class GameManager : MonoBehaviour
                 break;
 
             case State.Play:
-                if (_playerController.IsDead()) GameOver();
+                //if (_playerController.IsDead()) GameOver();
                 break;
 
             case State.GameOvar:
@@ -66,10 +69,26 @@ public class GameManager : MonoBehaviour
     }
 
     //GameOver
-    private void GameOver() 
+    public void GameOver() 
     {
         state = State.GameOvar;
 
+        // ポーズUIのアクティブ、非アクティブを切り替え
+        _gameOverPanel.SetActive(!_gameOverPanel.activeSelf);
+        _gameOverText.SetActive(!_gameOverText.activeSelf);
+        _returnToTitle.SetActive(!_returnToTitle.activeSelf);
+        _retry.SetActive(!_retry.activeSelf);
+
+        // ポーズUIが表示されているときは停止
+        if (_gameOverPanel.activeSelf && _gameOverText.activeSelf && _returnToTitle && _retry)
+        {
+            Time.timeScale = 0f;
+        }
+        // ポーズUIが表示されていないときは通常通り進行
+        else
+        {
+            Time.timeScale = 1f;
+        }
     }
 
     private void Reload()
