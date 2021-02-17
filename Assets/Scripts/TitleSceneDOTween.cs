@@ -13,13 +13,9 @@ public class TitleSceneDOTween : MonoBehaviour
     {
         touchToStart = GetComponent<Image>();
 
-        Dofade();
-    }
-    private void Dofade() 
-    {
-        touchToStart.DOFade(0.0f, this.duration)
-            .SetEase(Ease.Flash)
-            .SetLoops(-1, LoopType.Restart)
-            .Play();
+        var sequence = DOTween.Sequence();
+        sequence.Append(touchToStart.DOFade(0.0f, this.duration).SetEase(Ease.InOutFlash))
+                .SetLoops(-1, LoopType.Yoyo)
+                .Play();
     }
 }
