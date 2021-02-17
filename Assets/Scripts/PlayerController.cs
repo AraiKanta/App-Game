@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(GameManager))]
 public class PlayerController : MonoBehaviour
 {
+    [Header("GameManager")]
+    [SerializeField] GameManager gameManager;
     [Header("X軸方向に加える力")]
     [SerializeField] float MoveX;
     [Header("接地判定")]
@@ -12,12 +15,10 @@ public class PlayerController : MonoBehaviour
     [Header("重力")]
     public float gravityY;
     [Header("プレイヤーがTransFormRotationX軸で回転している角度")]
-    [SerializeField]private float rotationX = 0;
+    [SerializeField]private float rotationX = 0; 
     /// <summary>animatorの変数</summary>
     Animator _anim;
-
     private Rigidbody2D _rb2d = null;
-
     bool isDead = false;
 
     void Start()
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 0f;
 
+        gameManager.GameOver();
+
         return isDead;
     }
 
@@ -61,7 +64,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Player Dead");
             }
-            _anim.SetTrigger("Dead");
+            _anim.SetTrigger("Dead");  
         }
     }
 
