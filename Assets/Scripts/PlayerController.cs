@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class TestPlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     [Header("X軸方向に加える力")]
     [SerializeField] float MoveX;
@@ -59,7 +59,6 @@ public class TestPlayerController : MonoBehaviour
             {
                 Debug.Log("Player Dead");
             }
-
             _anim.SetTrigger("Dead");
         }
     }
