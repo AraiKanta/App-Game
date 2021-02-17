@@ -5,15 +5,20 @@ using UnityEngine.UI;
 
 public class PauseUI : MonoBehaviour
 {
-    public GameObject _pausePanel;
-    public GameObject _text;
-    public GameObject _returnToTitle;
-    public GameObject _retry;
-    public Button _changeButton;
+    [Header("パネル")]
+    [SerializeField] private GameObject _pausePanel;
+    [Header("ポーズのテキスト")]
+    [SerializeField] private GameObject _text;
+    [Header("タイトルに戻るボタン")]
+    [SerializeField] private GameObject _returnToTitle;
+    [Header("リトライボタン")]
+    [SerializeField] private GameObject _retry;
+    [Header("ポーズボタン")]
+    [SerializeField] private Button _pauseButton;
 
     private void Start()
     {
-        _changeButton.onClick.AddListener(OnClick);
+        _pauseButton.onClick.AddListener(OnClick);
     }
 
     public void OnClick()
@@ -35,8 +40,8 @@ public class PauseUI : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-        _changeButton.onClick.RemoveListener(OnClick);
-        _changeButton.onClick.AddListener(ReverseOnClick);
+        _pauseButton.onClick.RemoveListener(OnClick);
+        _pauseButton.onClick.AddListener(ReverseOnClick);
     }
     public void ReverseOnClick() 
     {
@@ -50,7 +55,7 @@ public class PauseUI : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-        _changeButton.onClick.RemoveListener(ReverseOnClick);
-        _changeButton.onClick.AddListener(OnClick);
+        _pauseButton.onClick.RemoveListener(ReverseOnClick);
+        _pauseButton.onClick.AddListener(OnClick);
     }
 }
