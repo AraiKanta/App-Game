@@ -15,7 +15,7 @@ public class SceneTransition : MonoBehaviour
     public string[] stageName;
     [Header("Panelオブジェクト")]
     public GameObject panel;
-
+    
     void Start()
     {
         alp = panel.GetComponent<Image>().color.a;
