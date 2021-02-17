@@ -22,8 +22,8 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private Text timerText;
     private float oldSeconds;
 
-    public GameObject _gameOverPanel;
-    public GameObject _gameOverText;
+    public GameObject _timeUpPanel;
+    public GameObject _timeUpText;
     public GameObject _returnToTitle;
     public GameObject _retry;
 
@@ -72,12 +72,12 @@ public class TimeManager : MonoBehaviour
             Debug.Log("TIME UP だよ～ん");
 
             // ゲームオーバーUIのアクティブ、非アクティブを切り替え
-            _gameOverPanel.SetActive(!_gameOverPanel.activeSelf);
-            _gameOverText.SetActive(!_gameOverText.activeSelf);
+            _timeUpPanel.SetActive(!_timeUpPanel.activeSelf);
+            _timeUpText.SetActive(!_timeUpText.activeSelf);
             _returnToTitle.SetActive(!_returnToTitle.activeSelf);
             _retry.SetActive(!_retry.activeSelf);
             // ゲームオーバーUIが表示されているときは停止
-            if (_gameOverPanel && _gameOverText && _returnToTitle && _retry)
+            if (_timeUpPanel && _timeUpText && _returnToTitle && _retry)
             {
                 Time.timeScale = 0f;
             }
