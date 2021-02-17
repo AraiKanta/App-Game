@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PauseUI : MonoBehaviour
 {
-    public GameObject _pauseUI;
+    public GameObject _pausePanel;
     public GameObject _text;
     public GameObject _returnToTitle;
     public GameObject _retry;
@@ -19,13 +19,13 @@ public class PauseUI : MonoBehaviour
     public void OnClick()
     {
         // ポーズUIのアクティブ、非アクティブを切り替え
-        _pauseUI.SetActive(!_pauseUI.activeSelf);
+        _pausePanel.SetActive(!_pausePanel.activeSelf);
         _text.SetActive(!_text.activeSelf);
         _returnToTitle.SetActive(!_returnToTitle.activeSelf);
         _retry.SetActive(!_retry.activeSelf);
 
         // ポーズUIが表示されているときは停止
-        if (_pauseUI.activeSelf && _text.activeSelf && _returnToTitle && _retry)
+        if (_pausePanel.activeSelf && _text.activeSelf && _returnToTitle && _retry)
         {
             Time.timeScale = 0f;
         }
@@ -40,9 +40,9 @@ public class PauseUI : MonoBehaviour
     }
     public void ReverseOnClick() 
     {
-        if (_pauseUI.activeSelf && _text.activeSelf && _returnToTitle && _retry)
+        if (_pausePanel.activeSelf && _text.activeSelf && _returnToTitle && _retry)
         {
-            _pauseUI.SetActive(!_pauseUI.activeSelf);
+            _pausePanel.SetActive(!_pausePanel.activeSelf);
             _text.SetActive(!_text.activeSelf);
             _returnToTitle.SetActive(!_returnToTitle.activeSelf);
             _retry.SetActive(!_retry.activeSelf);
