@@ -22,12 +22,18 @@ public class TimeManager : MonoBehaviour
     [SerializeField] private Text timerText;
     private float oldSeconds;
 
+    public GameObject _gameOverPanel;
+    public GameObject _gameOverText;
+    public GameObject _returnToTitle;
+    public GameObject _retry;
+
+
     void Start()
     {
         totalTime = minute * 60 + seconds;
         oldSeconds = 0f;
         timerText = GetComponentInChildren<Text>();
-        m_anim = GetComponent<Animator>();
+        m_anim = GetComponent<Animator>(); 
     }
 
 
@@ -63,7 +69,23 @@ public class TimeManager : MonoBehaviour
         //　制限時間以下になったらコンソールに『GameOver』という文字列を表示する
         if (totalTime <= 0f)
         {
-            Debug.Log("GameOverだよ～ん");
+            Debug.Log("TIME UP だよ～ん");
+
+            // ゲームオーバーUIのアクティブ、非アクティブを切り替え
+            _gameOverPanel.SetActive(!_gameOverPanel.activeSelf);
+            _gameOverText.SetActive(!_gameOverText.activeSelf);
+            _returnToTitle.SetActive(!_returnToTitle.activeSelf);
+            _retry.SetActive(!_retry.activeSelf);
+            // ゲームオーバーUIが表示されているときは停止
+            if (_gameOverPanel && _gameOverText && _returnToTitle && _retry)
+            {
+                Time.timeScale = 0f;
+            }
+            // ゲームオーバーUIが表示されていないときは通常通り進行
+            else
+            {
+                Time.timeScale = 1f;
+            }
         }
     }
 }
