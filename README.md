@@ -19,4 +19,4 @@ A game that successfully avoids obstacles and makes full use of gimmicks
 Game over due to obstacles or time up
 
 # 今思っていること
-* 超最終的には、switchでも遊べるようにしたいな～と思ってます。
+* 実は…超最終的には、switchでも遊べるようにしたいな～と思ってます。
