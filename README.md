@@ -7,8 +7,14 @@
 * プラットホーム：Android　・Platform：Android 
 * 端末縦持ち ・Device vertical holding
 
-# ゲーム説明
+# ゲーム説明 Game description
 * 白と黒のステージが上下に存在
-* 画面タップでプレイヤーを上下反転させる
-* うまく障害物をよけ,ギミックを駆使して進むゲーム
-* 障害物又はタイムアップでゲームオーバー
+画面タップでプレイヤーを上下反転させる
+うまく障害物をよけ,ギミックを駆使して進むゲーム
+障害物又はタイムアップでゲームオーバー
+
+* White and black stages are above and below
+Turn the player upside down by tapping the screen
+A game that successfully avoids obstacles and makes full use of gimmicks
+Game over due to obstacles or time up
+
