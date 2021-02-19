@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Obstacle
   - Ground
-  - DeadTile
+  - Goal
   layers:
   - Default
   - TransparentFX
@@ -52,6 +52,9 @@ TagManager:
     locked: 0
   - name: UtilityPole
     uniqueID: 2203285949
+    locked: 0
+  - name: Obstacle
+    uniqueID: 1542252419
     locked: 0
   - name: map
     uniqueID: 2434374669
