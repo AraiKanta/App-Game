@@ -65,7 +65,7 @@ public class PlayerController : MonoBehaviour
         return isGoal;
     }
 
-    //　DeadTileの当たり判定
+    //　Obstacleの当たり判定
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Obstacle")
@@ -77,7 +77,11 @@ public class PlayerController : MonoBehaviour
             }
             _anim.SetTrigger("Dead");  
         }
+    }
 
+    // GoalColliderの判定
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
         if (collision.gameObject.tag == "Goal")
         {
             isGoal = true;
@@ -85,9 +89,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Goal");
             }
-            _anim.SetTrigger("Jump");
         }
-
     }
 
     //重力反転
