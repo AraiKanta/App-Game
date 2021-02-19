@@ -90,10 +90,9 @@ public class GameManager : MonoBehaviour
         _gameOverText.SetActive(!_gameOverText.activeSelf);
         _returnToTitle.SetActive(!_returnToTitle.activeSelf);
         _retry.SetActive(!_retry.activeSelf);
-        _nextStage.SetActive(!_nextStage.activeSelf);
-
+        
         // ポーズUIが表示されているときは停止
-        if (_gameOverPanel.activeSelf && _gameOverText.activeSelf && _returnToTitle && _retry && _nextStage)
+        if (_gameOverPanel.activeSelf && _gameOverText.activeSelf && _returnToTitle && _retry)
         {
             Time.timeScale = 0f;
         }
@@ -106,14 +105,17 @@ public class GameManager : MonoBehaviour
 
     public void Goal() 
     {
+        state = State.Goal;
+
         // ポーズUIのアクティブ、非アクティブを切り替え
         _GoalPanel.SetActive(!_GoalPanel.activeSelf);
         _GoalText.SetActive(!_GoalText.activeSelf);
         _returnToTitle.SetActive(!_returnToTitle.activeSelf);
         _retry.SetActive(!_retry.activeSelf);
+        _nextStage.SetActive(!_nextStage.activeSelf);
 
         // ポーズUIが表示されているときは停止
-        if (_GoalPanel.activeSelf && _GoalText.activeSelf && _returnToTitle && _retry)
+        if (_GoalPanel.activeSelf && _GoalText.activeSelf && _returnToTitle && _retry && _nextStage)
         {
             Time.timeScale = 0f;
         }
