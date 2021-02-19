@@ -57,7 +57,7 @@ public class PlayerController : MonoBehaviour
     //　DeadTileの当たり判定
     public void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "DeadTile")
+        if (collision.gameObject.tag == "Obstacle")
         {
             isDead = true;
             if (isDead)
