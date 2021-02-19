@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Goal");
             }
-            _anim.SetTrigger("jump");
+            _anim.SetTrigger("Jump");
         }
 
     }
