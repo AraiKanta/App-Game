@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     Animator _anim;
     private Rigidbody2D _rb2d = null;
     bool isDead = false;
+    bool isGoal = false;
 
     void Start()
     {
@@ -54,6 +55,16 @@ public class PlayerController : MonoBehaviour
         return isDead;
     }
 
+    //Goalのフラグ判定
+    public bool IsGoal()
+    {
+        Time.timeScale = 0f;
+
+        gameManager.Goal();
+
+        return isGoal;
+    }
+
     //　DeadTileの当たり判定
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -66,6 +77,17 @@ public class PlayerController : MonoBehaviour
             }
             _anim.SetTrigger("Dead");  
         }
+
+        if (collision.gameObject.tag == "Goal")
+        {
+            isGoal = true;
+            if (isGoal)
+            {
+                Debug.Log("Goal");
+            }
+            _anim.SetTrigger("jump");
+        }
+
     }
 
     //重力反転
