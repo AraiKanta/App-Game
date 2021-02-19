@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Ready();
-        NextStageClick();
 
         //シーンを切り替えてもこのゲームオブジェクトを削除しないようにする
         DontDestroyOnLoad(gameObject);   
