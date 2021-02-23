@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     Animator _anim;
     private Rigidbody2D _rb2d = null;
     bool isDead = false;
-    bool isGoal = false;
+    
 
     void Start()
     {
@@ -55,16 +55,6 @@ public class PlayerController : MonoBehaviour
         return isDead;
     }
 
-    //Goalのフラグ判定
-    public bool IsGoal()
-    {
-        Time.timeScale = 0f;
-
-        gameManager.Goal();
-
-        return isGoal;
-    }
-
     //　Obstacleの当たり判定
     public void OnCollisionEnter2D(Collision2D collision)
     {
@@ -76,19 +66,6 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Player Dead");
             }
             _anim.SetTrigger("Dead");  
-        }
-    }
-
-    // GoalColliderの判定
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Goal")
-        {
-            isGoal = true;
-            if (isGoal)
-            {
-                Debug.Log("Goal");
-            }
         }
     }
 
