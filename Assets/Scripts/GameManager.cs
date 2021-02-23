@@ -18,21 +18,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject _returnToTitle;
     [Header("リトライボタン")]
     [SerializeField] private GameObject _retry;
-    [Header("パネル")]
-    [SerializeField] private GameObject _GoalPanel;
-    [Header("ゴールのテキスト")]
-    [SerializeField] private GameObject _GoalText;
-    [Header("次のステージボタン")]
-    [SerializeField] private GameObject _nextStage;
-
-
+    
     //ステート
     enum State 
     {   
         Ready,
         Play,
         GameOvar,
-        Goal,
     }
     State state;
 
@@ -58,10 +50,6 @@ public class GameManager : MonoBehaviour
 
             case State.GameOvar:
                 
-                break;
-
-            case State.Goal:
-
                 break;
         }
     }
@@ -103,29 +91,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Goal() 
-    {
-        state = State.Goal;
-
-        // ポーズUIのアクティブ、非アクティブを切り替え
-        _GoalPanel.SetActive(!_GoalPanel.activeSelf);
-        _GoalText.SetActive(!_GoalText.activeSelf);
-        _returnToTitle.SetActive(!_returnToTitle.activeSelf);
-        _retry.SetActive(!_retry.activeSelf);
-        _nextStage.SetActive(!_nextStage.activeSelf);
-
-        // ポーズUIが表示されているときは停止
-        if (_GoalPanel.activeSelf && _GoalText.activeSelf && _returnToTitle && _retry && _nextStage)
-        {
-            Time.timeScale = 0f;
-        }
-        // ポーズUIが表示されていないときは通常通り進行
-        else
-        {
-            Time.timeScale = 1f;
-        }
-    }
-
     private void Reload()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
@@ -141,15 +106,5 @@ public class GameManager : MonoBehaviour
         }
 
         SceneManager.LoadScene("Test");
-    }
-
-    public void NextStageClick()
-    {
-        if (Time.timeScale == 0f)
-        {
-            Time.timeScale = 1f;
-        }
-
-        SceneManager.LoadScene("Stage1");
     }
 }
