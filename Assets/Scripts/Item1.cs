@@ -9,10 +9,10 @@ public class Item1 : MonoBehaviour
     [SerializeField] GameObject[] itemUI;
     void Start()
     {
-        itemCyan = GameObject.Find("Items (Cyan) (1)"); 
+        itemCyan = GameObject.Find("Items (1)"); 
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
