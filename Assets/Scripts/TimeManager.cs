@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>制限時間を制御するやつ</summary>
 [RequireComponent(typeof(Text))]
 public class TimeManager : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class TimeManager : MonoBehaviour
     [Header("残り何秒でTimeUPかを可視化するためのカラー変更")]
     [SerializeField] Color m_warningColor = Color.red;
     [Header("m_warningColorのアニメーション")]
-    [SerializeField] Animator m_anim;
+    [SerializeField] Animator _anim;
     [Header("CountDownTimer")]
     [SerializeField] private Text timerText;
     private float oldSeconds;
@@ -37,7 +38,7 @@ public class TimeManager : MonoBehaviour
         totalTime = minute * 60 + seconds;
         oldSeconds = 0f;
         timerText = GetComponentInChildren<Text>();
-        m_anim = GetComponent<Animator>(); 
+        _anim = GetComponent<Animator>(); 
     }
 
 
@@ -59,9 +60,9 @@ public class TimeManager : MonoBehaviour
         if (totalTime < m_startWarning)
         {
             timerText.color = m_warningColor;
-            if (m_anim)
+            if (_anim)
             {
-                m_anim.Play("Warning");
+                _anim.Play("Warning");
             }
         }
         //　タイマー表示用UIテキストに時間を表示する

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>ポーズUIを表示するやつ</summary>
 public class PauseUI : MonoBehaviour
 {
     [Header("パネル")]

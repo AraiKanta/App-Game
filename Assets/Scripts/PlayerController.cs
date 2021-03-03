@@ -2,16 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>プレイヤーの動きを制御しているやつ</summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(GameManager))]
 public class PlayerController : MonoBehaviour
 {
     [Header("GameManager")]
-    [SerializeField] GameManager gameManager;
+    [SerializeField] GameManager _gameManager;
     [Header("X軸方向に加える力")]
     [SerializeField] float MoveX;
     [Header("接地判定")]
-    public GroundCheck groundCheck;
+    public GroundCheck _groundCheck;
     [Header("重力")]
     public float gravityY;
     [Header("プレイヤーがTransFormRotationX軸で回転している角度")]
@@ -41,7 +42,6 @@ public class PlayerController : MonoBehaviour
 
         //プレイヤーのRotationXを回転させている
         this.transform.rotation = Quaternion.Euler(rotationX, 0, 0);
-
         Physics2D.gravity = new Vector2(0, gravityY);
     }
 

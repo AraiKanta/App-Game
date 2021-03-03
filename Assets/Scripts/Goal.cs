@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>ゴール時にUIを表示させるやつ</summary>
 public class Goal : MonoBehaviour
 {
     [Header("パネル")]
