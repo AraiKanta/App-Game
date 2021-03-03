@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 public class Item1 : MonoBehaviour
 {
-    GameObject itemCyan;
-    [SerializeField] GameObject[] itemUI;
+    GameObject _itemCyan;
+    [SerializeField] GameObject[] _itemUI;
     void Start()
     {
-        itemCyan = GameObject.Find("Items (1)"); 
+        _itemCyan = GameObject.Find("Items (1)"); 
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            foreach (var item in itemUI)
+            foreach (var item in _itemUI)
             {
                 item.SetActive(true);
             }
-            itemCyan.SetActive(false);
+            _itemCyan.SetActive(false);
         }
     }
 }
