@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour
 {
     [Header("PlayerController")]
     public PlayerController _playerController;
-    //[Header("TimeManager")]
-    //public TimeManager _timeManager;
     [Header("パネル")]
     [SerializeField] private GameObject _gameOverPanel;
     [Header("ゲームオーバーのテキスト")]
@@ -45,11 +43,11 @@ public class GameManager : MonoBehaviour
                 break;
 
             case State.Play:
-                //if (_playerController.IsDead()) GameOver();
+                if (_playerController.IsDead()) GameOver();
                 break;
 
             case State.GameOvar:
-                
+                //if (_playerController.IsDead()) GameOver();
                 break;
         }
     }
