@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class Item1 : MonoBehaviour
 {
-    GameObject _itemCyan;
-    [SerializeField] GameObject[] _itemUI;
+    private GameObject _itemCyan;
+    [SerializeField] private GameObject[] _itemUI;
     void Start()
     {
         _itemCyan = GameObject.Find("Items (1)"); 

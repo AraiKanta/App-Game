@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private float rotationX = 0; 
     /// <summary>animatorの変数</summary>
     Animator _anim;
+    /// <summary>Rigidbody2D</summary>
     private Rigidbody2D _rb2d = null;
+    /// <summary>Deadのフラグ</summary>
     bool isDead = false;
     
 
@@ -45,7 +47,9 @@ public class PlayerController : MonoBehaviour
         Physics2D.gravity = new Vector2(0, gravityY);
     }
 
-    //Deadのフラグ判定
+    /// <summary>
+    /// Deadのフラグ判定
+    /// </summary>
     public bool IsDead() 
     {
         Time.timeScale = 0f;
@@ -55,7 +59,10 @@ public class PlayerController : MonoBehaviour
         return isDead;
     }
 
-    //　Obstacleの当たり判定
+    /// <summary>
+    ///  Obstacleの当たり判定
+    /// </summary>
+    /// <param name="collision"></param>
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Obstacle")
@@ -69,7 +76,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //重力反転
+    /// <summary>
+    /// 重力反転
+    /// </summary>
     public void OnClick()
     { 
         gravityY = -gravityY;

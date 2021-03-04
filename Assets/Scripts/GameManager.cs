@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [Header("PlayerController")]
     public PlayerController _playerController;
-    [Header("TimeManager")]
-    public TimeManager _timeManager;
+    //[Header("TimeManager")]
+    //public TimeManager _timeManager;
     [Header("パネル")]
     [SerializeField] private GameObject _gameOverPanel;
     [Header("ゲームオーバーのテキスト")]

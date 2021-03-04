@@ -18,14 +18,20 @@ public class Goal : MonoBehaviour
     [SerializeField] private GameObject _nextStage;
     bool isGoal = false;
 
-    //Goalのフラグ判定
+    /// <summary>
+    /// Goalのフラグ判定
+    /// </summary>
     public bool IsGoal()
     {
         Time.timeScale = 0f;
 
         return isGoal;
     }
-    // GoalColliderの判定
+
+    /// <summary>
+    /// GoalColliderの判定
+    /// </summary>
+    /// <param name="collision"></param>
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -56,6 +62,9 @@ public class Goal : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 次のステージに進むボタン
+    /// </summary>
     public void NextStageClick()
     {
         if (Time.timeScale == 0f)
