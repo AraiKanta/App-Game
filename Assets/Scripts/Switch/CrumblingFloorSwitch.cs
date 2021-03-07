@@ -15,11 +15,20 @@ public class CrumblingFloorSwitch : MonoBehaviour
     private GameObject _box;
     [Header("非アクティブのSwitchオブジェクトを入れる")]
     [SerializeField] private GameObject[] _switchSprites;
+    /// <summary>黒スイッチなら✅白なら□</summary>
+    [Header("黒=true,白=false")]
+    [SerializeField] private bool switchBool = false;
 
     void Start()
     {
-        _switchSpriteBlack = GameObject.Find("LeverSwitch_Black");
-        //_switchSpriteWhite = GameObject.Find("LeverSwitch_White");
+        if (switchBool == true)
+        {
+            _switchSpriteBlack = GameObject.Find("LeverSwitch_Black");
+        }
+        else
+        {
+            _switchSpriteWhite = GameObject.Find("LeverSwitch_White");
+        }
         _crumblingFloor = GameObject.Find("CrumblingFloor");
         _box = GameObject.Find("Box");
     }
@@ -34,8 +43,15 @@ public class CrumblingFloorSwitch : MonoBehaviour
                 Destroy(_crumblingFloor);
                 Destroy(_box);
             }
-            _switchSpriteBlack.SetActive(false);
-            //_switchSpriteWhite.SetActive(false);
+
+            if (switchBool == true)
+            {
+                _switchSpriteBlack.SetActive(false);
+            }
+            else
+            {
+                _switchSpriteWhite.SetActive(false);
+            }
         }
     }
 }
