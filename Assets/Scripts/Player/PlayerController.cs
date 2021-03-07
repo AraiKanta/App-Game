@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
     public GroundCheck _groundCheck;
     [Header("重力")]
     public float gravityY;
-    [Header("プレイヤーがTransFormRotationX軸で回転している角度")]
+    [Header("プレイヤーがX軸で回転している角度")]
     [SerializeField]private float rotationX = 0; 
     /// <summary>animatorの変数</summary>
     Animator _anim;
