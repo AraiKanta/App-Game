@@ -10,7 +10,7 @@
 # ゲーム説明 Game description
 * 白と黒のステージが上下に存在
 * 画面タップでプレイヤーを上下反転させる
-* うまく障害物をよけ,ギミックを駆使して進むゲーム (障害物又はタイムアップでゲームオーバー)
+* うまく障害物をよけ,ギミックを駆使して進むゲーム (障害物に当たる又はタイムアップでゲームオーバー)
 
 * White and black stages are above and below
 Turn the player upside down by tapping the screen
