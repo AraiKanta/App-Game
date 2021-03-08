@@ -6,7 +6,6 @@
 * 開発期間 : 開発中　・Development period : In development
 * プラットホーム：Android　・Platform：Android 
 * 端末縦持ち ・Device vertical holding
-
 * 開発過程の動画(再生リスト) : https://www.youtube.com/watch?v=oHf23xHbujo&list=PLcZ4lKvcRvQ8G3x15q4gFY8I8C97vB1Ci 
 
 # ゲーム説明 Game description
