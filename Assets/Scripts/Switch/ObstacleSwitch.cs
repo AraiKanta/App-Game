@@ -5,6 +5,7 @@ using UnityEngine;
 /// <summary>障害物のレバースイッチのアクティブ非アクティブさせるやつ</summary>
 public class ObstacleSwitch : MonoBehaviour
 {
+    [SerializeField] private Obstacle _obstacle;
     /// <summary>黒のレバースイッチ</summary>
     private GameObject _switchSpriteBlack;
     /// <summary>白のレバースイッチ</summary>
@@ -30,6 +31,8 @@ public class ObstacleSwitch : MonoBehaviour
     }
     public bool IsSwitch() 
     {
+        _obstacle.IsFall();
+
         return isSwitch;
     }
 
