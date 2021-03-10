@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb2d = null;
     /// <summary>Deadのフラグ</summary>
     bool isDead = false;
-    
+    ///// <summary>操作のフラグ </summary>
+    //bool operation = false;
 
     void Start()
     {
@@ -35,7 +36,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+        //if (!operation)
+        //{
+        //    return;
+        //}
     }
     private void FixedUpdate()
     {
@@ -45,6 +49,13 @@ public class PlayerController : MonoBehaviour
         //プレイヤーのRotationXを回転させている
         this.transform.rotation = Quaternion.Euler(rotationX, 0, 0);
         Physics2D.gravity = new Vector2(0, gravityY);
+
+        return;
+
+        //if (!operation)
+        //{
+            
+        //}  
     }
 
     /// <summary>
@@ -83,10 +94,5 @@ public class PlayerController : MonoBehaviour
     { 
         gravityY = -gravityY;
         rotationX = -rotationX + 180;
-    }
-
-    public void SetSteerActive(bool active) 
-    {
-        _rb2d.isKinematic = !active;
     }
 }
