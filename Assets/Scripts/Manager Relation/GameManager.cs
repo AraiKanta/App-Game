@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     [Header("PlayerController")]
     public PlayerController _playerController;
@@ -17,59 +17,68 @@ public class GameManager : MonoBehaviour
     [Header("リトライボタン")]
     [SerializeField] private GameObject _retry;
     
+    //これこのゲームにはいらんかも
     //ステート
-    enum State 
-    {   
-        Ready,
-        Play,
-        GameOvar,
+    //enum State 
+    //{   
+    //    Ready,
+    //    Play,
+    //    GameOvar,
+    //}
+    //State state;
+
+    public void Awake()
+    {
+        if (this != Instance)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        //シーンを切り替えてもこのゲームオブジェクトを削除しないようにする
+        DontDestroyOnLoad(gameObject);
     }
-    State state;
 
     void Start()
     {
-        Ready();
-
-        //シーンを切り替えてもこのゲームオブジェクトを削除しないようにする
-        DontDestroyOnLoad(gameObject);   
+        //Ready();  
     }
 
-    void LateUpdate()
-    {
-        switch (state) 
-        {
-            case State.Ready:
-                
-                break;
+    //void LateUpdate()
+    //{
+    //switch (state) 
+    //{
+    //case State.Ready:
 
-            case State.Play:
-                if (_playerController.IsDead()) GameOver();
-                break;
+    //    break;
 
-            case State.GameOvar:
-                //if (_playerController.IsDead()) GameOver();
-                break;
-        }
-    }
+    //case State.Play:
+    //    if (_playerController.IsDead()) GameOver();
+    //    break;
+
+    //case State.GameOvar:
+    //    //if (_playerController.IsDead()) GameOver();
+    //    break;
+    //}
+    //}
 
     //始まる前
-    private void Ready() 
-    {
-        state = State.Ready;
-        //_playerController.SetSteerActive(false);
-    }
+    //private void Ready()
+    //{
+    //    state = State.Ready;
+    //    _playerController.SetSteerActive(false);
+    //}
 
     //Start
-    private void GameStart()
-    {
-        state = State.Play;
-        //_playerController.SetSteerActive(true);
-    }
+    //private void GameStart()
+    //{
+    //    state = State.Play;
+    //    _playerController.SetSteerActive(true);
+    //}
 
     //GameOver
     public void GameOver() 
     {
-        state = State.GameOvar;
+        //state = State.GameOvar;
 
         // ポーズUIのアクティブ、非アクティブを切り替え
         _gameOverPanel.SetActive(!_gameOverPanel.activeSelf);
@@ -89,7 +98,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private void Reload()
+    public void Reload()
     {
         string currentSceneName = SceneManager.GetActiveScene().name;
         SceneManager.LoadScene(currentSceneName);
@@ -103,6 +112,6 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 1f;
         }
 
-        SceneManager.LoadScene("Test");
+        SceneManager.LoadScene("TestStage");
     }
 }
