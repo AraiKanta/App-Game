@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(MoveSceneManager))]
+//[RequireComponent(typeof(SaveManager))]
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     [Header("PlayerController")]
@@ -16,7 +18,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     [SerializeField] private GameObject _returnToTitle;
     [Header("リトライボタン")]
     [SerializeField] private GameObject _retry;
-    
+
+    MoveSceneManager _moveSceneManager;
+    //SaveManager saveManager;
+
     //これこのゲームにはいらんかも
     //ステート
     //enum State 
@@ -36,6 +41,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         }
         //シーンを切り替えてもこのゲームオブジェクトを削除しないようにする
         DontDestroyOnLoad(gameObject);
+
+        _moveSceneManager = GetComponent<MoveSceneManager>();
+        //saveManager = GetComponent<SaveManager>();
     }
 
     void Start()
@@ -76,6 +84,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     //}
 
     //GameOver
+
+    public void LoadComponents() 
+    {
+        _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+    }
     public void GameOver() 
     {
         //state = State.GameOvar;
