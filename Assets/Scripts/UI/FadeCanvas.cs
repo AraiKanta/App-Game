@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary>キャンバスでフェードイン、アウトさせるやつ </summary>
 public class FadeCanvas : MonoBehaviour
 {
 
