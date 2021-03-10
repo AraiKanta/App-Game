@@ -13,7 +13,7 @@ public class FadeCanvas : MonoBehaviour
     public bool fadeOut = false;
 
     [SerializeField]
-    Image panelImage;
+    Image _panelImage;
     [SerializeField]
     float fadeSpeed = 0.02f;
 
@@ -25,10 +25,10 @@ public class FadeCanvas : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         //元の色を取得
-        red = panelImage.color.r;
-        green = panelImage.color.g;
-        blue = panelImage.color.b;
-        alpha = panelImage.color.a;
+        red = _panelImage.color.r;
+        green = _panelImage.color.g;
+        blue = _panelImage.color.b;
+        alpha = _panelImage.color.a;
     }
 
     //毎フレームの処理
@@ -75,6 +75,6 @@ public class FadeCanvas : MonoBehaviour
     //透明度を変更
     void SetAlpha()
     {
-        panelImage.color = new Color(red, green, blue, alpha);
+        _panelImage.color = new Color(red, green, blue, alpha);
     }
 }
