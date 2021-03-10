@@ -6,16 +6,19 @@ using UnityEngine.SceneManagement;
 public class MoveSceneManager : SingletonMonoBehaviour<MoveSceneManager>
 {
 
-    [SerializeField, Tooltip("フェードイン、フェードアウトの間の待ち時間")]
-    float fadeWaitTime = 0;
-    [SerializeField, Tooltip("トランジションに使用するキャンバスのプレハブ")]
-    GameObject fadeCanvasPrefab;
+    [Header("現在のステージ番号（0始まり）")]
+    [System.NonSerialized] private int currentStageNum = 0;
+    [Header("ステージ名")]
+    [SerializeField] string[] stageName;
+    [Header("トランジションに使用するキャンバスのプレハブ")]
+    [SerializeField]
+    GameObject _fadeCanvasPrefab;
+    [Header("フェード時の待ち時間")]
+    [SerializeField] private float fadeWaitTime = 0f;
 
-    int currentStageNum = 0; //現在のステージ番号（0始まり）
-
-    GameObject fadeCanvasObj;
-    FadeCanvas fadeCanvas;
-    GameManager gameManager;
+    GameObject _fadeCanvasObj;
+    FadeCanvas _fadeCanvas;
+    GameManager _gameManager;
 
     public int CurrentStageNum
     {
@@ -57,7 +60,7 @@ public class MoveSceneManager : SingletonMonoBehaviour<MoveSceneManager>
 
         DontDestroyOnLoad(gameObject);
 
-        gameManager = GetComponent<GameManager>();
+        _gameManager = GetComponent<GameManager>();
     }
 
     void Start()
@@ -71,7 +74,7 @@ public class MoveSceneManager : SingletonMonoBehaviour<MoveSceneManager>
     {
         if (StageName != "Title")
         {
-            gameManager.LoadComponents();
+            _gameManager.LoadComponents();
         }
     }
 
@@ -80,13 +83,13 @@ public class MoveSceneManager : SingletonMonoBehaviour<MoveSceneManager>
     {
 
         //フェードオブジェクトを生成
-        fadeCanvasObj = Instantiate(fadeCanvasPrefab);
+        _fadeCanvasObj = Instantiate(_fadeCanvasPrefab);
 
         //コンポーネントを取得
-        fadeCanvas = fadeCanvasObj.GetComponent<FadeCanvas>();
+        _fadeCanvas = _fadeCanvasObj.GetComponent<FadeCanvas>();
 
         //フェードインさせる
-        fadeCanvas.fadeIn = true;
+        _fadeCanvas.fadeIn = true;
 
         yield return new WaitForSeconds(fadeWaitTime);
 
@@ -94,7 +97,7 @@ public class MoveSceneManager : SingletonMonoBehaviour<MoveSceneManager>
         yield return SceneManager.LoadSceneAsync(sceneNum);
 
         //フェードアウトさせる
-        fadeCanvas.fadeOut = true;
+        _fadeCanvas.fadeOut = true;
 
         CurrentStageNum = sceneNum;
     }
@@ -105,5 +108,4 @@ public class MoveSceneManager : SingletonMonoBehaviour<MoveSceneManager>
         //コルーチンを実行
         StartCoroutine(WaitForLoadScene(sceneNum));
     }
-
 }
