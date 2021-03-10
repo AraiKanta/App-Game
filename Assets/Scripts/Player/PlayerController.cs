@@ -23,8 +23,6 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb2d = null;
     /// <summary>Deadのフラグ</summary>
     bool isDead = false;
-    ///// <summary>操作のフラグ </summary>
-    //bool operation = false;
 
     void Start()
     {
@@ -36,10 +34,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //if (!operation)
-        //{
-        //    return;
-        //}
+        
     }
     private void FixedUpdate()
     {
@@ -51,11 +46,6 @@ public class PlayerController : MonoBehaviour
         Physics2D.gravity = new Vector2(0, gravityY);
 
         return;
-
-        //if (!operation)
-        //{
-            
-        //}  
     }
 
     /// <summary>
