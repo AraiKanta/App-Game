@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>シーン遷移のスクリプト </summary>
 public class MoveSceneManager : SingletonMonoBehaviour<MoveSceneManager>
 {
-
     [Header("現在のステージ番号（0始まり）")]
     [System.NonSerialized] private int currentStageNum = 0;
     [Header("ステージ名")]
