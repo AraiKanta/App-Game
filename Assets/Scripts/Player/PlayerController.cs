@@ -5,10 +5,11 @@ using UnityEngine;
 /// <summary>プレイヤーの動きを制御しているやつ</summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(GameManager))]
+[RequireComponent(typeof(UIManager))]
 public class PlayerController : MonoBehaviour
 {
     [Header("GameManager")]
-    [SerializeField] GameManager _gameManager;
+    [SerializeField] UIManager _uiManager;
     [Header("X軸方向に加える力")]
     [SerializeField] float MoveX;
     [Header("接地判定")]
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
     {
         Time.timeScale = 0f;
 
-        _gameManager.GameOver();
+        _uiManager.GameOver();
 
         return isDead;
     }
