@@ -1,0 +1,57 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
+/// <summary>
+/// スタッフロールのスクリプト
+/// </summary>
+public class StaffRoll : MonoBehaviour
+{
+    [Header("テキストのスクロールスピード")]
+    [SerializeField]
+    private float textScrollSpeed = 30;
+    [Header("テキストの制限位置")]
+    [SerializeField]
+    private float limitPosition = 730f;
+    /// <summary>エンドロールが終了したかどうか </summary>
+    private bool isStopStaffRoll;
+    /// <summary>シーン移動用コルーチン </summary>
+    private Coroutine staffRollCoroutine;
+
+    void Update()
+    {
+        // エンドロールが終了した時
+        if (isStopStaffRoll)
+        {
+            staffRollCoroutine = StartCoroutine(GoToNextScene());
+        }
+        else
+        {
+            // エンドロール用テキストがリミットを越えるまで動かす
+            if (transform.position.y <= limitPosition)
+            {
+                transform.position = new Vector2(transform.position.x, transform.position.y + textScrollSpeed * Time.deltaTime);
+            }
+            else
+            {
+                isStopStaffRoll = true;
+            }
+        }
+    }
+
+    IEnumerator GoToNextScene()
+    {
+        // 5秒間待つ
+        yield return new WaitForSeconds(2f);
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            StopCoroutine(staffRollCoroutine);
+            SceneManager.LoadScene("Option");
+        }
+
+        yield return null;
+    }
+}
