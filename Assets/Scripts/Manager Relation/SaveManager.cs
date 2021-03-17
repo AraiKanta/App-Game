@@ -81,7 +81,6 @@ public class SaveManager : SingletonMonoBehaviour<SaveManager>
         }
     }
 
-
     public void InitSaveData()
     {
         save = new SaveData();
