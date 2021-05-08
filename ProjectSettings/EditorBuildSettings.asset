@@ -15,15 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/HowTo.unity
     guid: 4672287fb7e49514f9eb19a5a2824f42
   - enabled: 1
-    path: Assets/Scenes/StageSelect.unity
-    guid: f482528f45e04654294e1d1f65a58149
+    path: Assets/Scenes/Audio.unity
+    guid: 9ba2623235579ca4593def382d86eabc
   - enabled: 1
-    path: Assets/Scenes/StageSelect 1.unity
-    guid: f12bdf0b006402e408f78bfa50e03cce
+    path: Assets/Scenes/Credit.unity
+    guid: fcb45ee1d366eb54dad2b51f3256ecb2
   - enabled: 1
     path: Assets/Scenes/TestStage.unity
     guid: 52d7e0e9ad461d14ebc1d3935b0dea1e
-  - enabled: 1
-    path: Assets/Scenes/Stage1.unity
-    guid: a499bdf34ce92014d8b6d2121b2c046a
   m_configObjects: {}
