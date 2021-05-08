@@ -10,22 +10,20 @@ using UnityEngine.UI;
 public class StaffRoll : MonoBehaviour
 {
     [Header("テキストのスクロールスピード")]
-    [SerializeField]
-    private float textScrollSpeed = 30;
+    [SerializeField] private float textScrollSpeed = 30;
     [Header("テキストの制限位置")]
-    [SerializeField]
-    private float limitPosition = 730f;
+    [SerializeField] private float limitPosition = 730f;
     /// <summary>エンドロールが終了したかどうか </summary>
     private bool isStopStaffRoll;
     /// <summary>シーン移動用コルーチン </summary>
-    private Coroutine staffRollCoroutine;
+    private Coroutine _staffRollCoroutine;
 
     void Update()
     {
         // エンドロールが終了した時
         if (isStopStaffRoll)
         {
-            staffRollCoroutine = StartCoroutine(GoToNextScene());
+            _staffRollCoroutine = StartCoroutine(GoToNextScene());
         }
         else
         {
@@ -48,7 +46,7 @@ public class StaffRoll : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
-            StopCoroutine(staffRollCoroutine);
+            StopCoroutine(_staffRollCoroutine);
             SceneManager.LoadScene("Option");
         }
 
