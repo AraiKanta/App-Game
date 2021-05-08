@@ -17,4 +17,11 @@ public class DontDestroyAudio : SingletonMonoBehaviour<DontDestroyAudio>
         }
         DontDestroyOnLoad(this);
     }
+
+    public void AudioDestroy() 
+    {
+        SceneManager.MoveGameObjectToScene(gameObject, SceneManager.GetActiveScene());
+        SceneManager.LoadScene(sceneName);
+    }
+    
 }
