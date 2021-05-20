@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-/// <summary>UIのManager </summary>
+/// <summary>UIのManagerクラス </summary>
 public class UIManager : MonoBehaviour
 {
     [Header("ポーズパネル")]
