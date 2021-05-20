@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-//シーン遷移してもオーディオ消さない奴
+/// <summary> シーン遷移してもオーディオ消さないクラス </summary>
 public class DontDestroyAudio : SingletonMonoBehaviour<DontDestroyAudio>
 {
     [SerializeField] private string sceneName;
