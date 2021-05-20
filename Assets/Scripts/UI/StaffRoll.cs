@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-/// <summary>
-/// スタッフロールのスクリプト
-/// </summary>
+/// <summary> スタッフロールのクラス </summary>
 public class StaffRoll : MonoBehaviour
 {
     [Header("テキストのスクロールスピード")]
