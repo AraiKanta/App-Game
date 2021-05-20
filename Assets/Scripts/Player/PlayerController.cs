@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>プレイヤーの動きを制御しているやつ</summary>
+/// <summary>プレイヤーの動きを制御しているクラス</summary>
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(GameManager))]
 [RequireComponent(typeof(UIManager))]
