@@ -5,13 +5,12 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(MoveSceneManager))]
-[RequireComponent(typeof(SaveManager))]
+///<summary> ゲームの進行を管理するクラス <summary>
 public class GameManager : SingletonMonoBehaviour<GameManager>
 {
     [Header("PlayerController")]
     public PlayerController _playerController;
     MoveSceneManager _moveSceneManager;
-    SaveManager _saveManager;
 
     bool isGameScene = false;
     bool oneUse = true;
@@ -27,7 +26,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
         DontDestroyOnLoad(gameObject);
 
         _moveSceneManager = GetComponent<MoveSceneManager>();
-        _saveManager = GetComponent<SaveManager>();
     }
 
     void Start()
@@ -59,16 +57,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>
     public void LoadComponents() 
     {
         _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-    }
-
-    public void GameClear() 
-    {
-        
-    }
-
-    public void GameOver()
-    {
-        
     }
 
     public void Reload()
