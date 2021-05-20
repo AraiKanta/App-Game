@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/// <summary> Audio調整用クラス </summary>
 public class VolumeAdjustment: MonoBehaviour
 {
 
