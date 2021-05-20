@@ -813,7 +813,7 @@ MonoBehaviour:
   currentStageNum: 0
   stageName:
   - Title
-  - StageSelect
+  - TestStage
   panel: {fileID: 1666718274}
 --- !u!1 &1666718274
 GameObject:
