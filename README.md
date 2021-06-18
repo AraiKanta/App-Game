@@ -17,3 +17,7 @@
 Turn the player upside down by tapping the screen
 A game that successfully avoids obstacles and makes full use of gimmicks
 Game over due to obstacles or time up
+
+# ゲーム画面
+![スクリーンショット 2021-03-15 115542](https://user-images.githubusercontent.com/57022767/122528656-89595f80-d057-11eb-80cc-3dffea592e56.png)
+![スクリーンショット 2021-03-15 115811](https://user-images.githubusercontent.com/57022767/122528671-8d857d00-d057-11eb-82ec-1f0bc6c8a9d4.png)
